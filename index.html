@@ -42,13 +42,25 @@
         </div>
       </div>
       <div class="inventory-panel" id="inventory">
-        <div class="inner"></div>
+        <div class="inner">
+          <h1>Inventory</h1>
+          <div class="slots" id="slots">
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    
+    const inventory = document.getElementById('slots');
+    const slotCount = 45; // for example, 8x5 grid
+
+    for (let i = 0; i < slotCount; i++) {
+      const slot = document.createElement('div');
+      slot.className = 'slot';
+      inventory.appendChild(slot);
+    }
   </script>
 </body>
 </html>
