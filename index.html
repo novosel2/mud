@@ -51,7 +51,17 @@
         </div>
       </div>
       <div class="party-chat">
-        <div class="inner"></div>
+        <div class="inner">
+          <div class="messages">
+            <p class="message">milkisa: <span class="mes-span">Hey man</span></p>
+            <p class="message">luciija: <span class="mes-span">Searching the spot where she dead</span></p>
+            <p class="message">luciija: <span class="mes-span">It's too dark in here</span></p>
+            <p class="message">tobejarabus: <span class="mes-span">Got a torch?</span></p>
+          </div>
+          <div class="input-command">
+            <span class="input-sign">></span><input id="commandInput" type="text" placeholder="Type your message here..." autocomplete="off" autocorrect="off" spellcheck="false" />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -98,6 +108,25 @@
       slot.className = 'slot';
       inventory.appendChild(slot);
     }
+
+    const commandInput = document.getElementById("commandInput");
+    const messagesContainer = document.querySelector(".messages");
+
+    commandInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        const messageText = commandInput.value.trim();
+        if (messageText) {
+          const newMessage = document.createElement("p");
+          newMessage.className = "message";
+          newMessage.innerHTML = `You: <span class="mes-span">${messageText}</span>`;
+          messagesContainer.appendChild(newMessage);
+          commandInput.value = ""; // Clear the input field
+        }
+
+        // Scroll to the bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+    });
   </script>
 </body>
 </html>
