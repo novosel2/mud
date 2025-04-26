@@ -59,7 +59,7 @@
             <p class="message">tobejarabus: <span class="mes-span">Got a torch?</span></p>
           </div>
           <div class="input-command">
-            <span class="input-sign">></span><input id="commandInput" type="text" placeholder="Type your message here..." autocomplete="off" autocorrect="off" spellcheck="false" />
+            <span class="input-sign">></span><input id="textInput" type="text" placeholder="Type your message here..." autocomplete="off" autocorrect="off" spellcheck="false" />
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
             <p class="console-message">It was a resting place once, built to seal away the last of an ancient cult. They dabbled in something... not magic exactly, but something older. The kind of knowledge that twists both the body and the mind. They filled the tomb with relics — weapons, scrolls, entire tomes — and left something down there to watch over it all. Not out of duty. Out of fear.</p>
           </div>
           <div class="input-command">
-            <span class="input-sign">></span><input id="commandInput" type="text" placeholder="Type your message here..." autocomplete="off" autocorrect="off" spellcheck="false" />
+            <span class="input-sign">></span><input id="commandInput" type="text" placeholder="Your commands..." autocomplete="off" autocorrect="off" spellcheck="false" />
           </div>
         </div>
       </div>
@@ -126,22 +126,49 @@
       inventory.appendChild(slot);
     }
 
-    const commandInput = document.getElementById("commandInput");
+    const textInput = document.getElementById("textInput");
     const messagesContainer = document.querySelector(".messages");
+
+    textInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        const messageText = textInput.value.trim();
+        if (messageText) {
+          const newMessage = document.createElement("p");
+          newMessage.className = "message";
+          newMessage.innerHTML = `You: <span class="mes-span">${messageText}</span>`;
+          messagesContainer.appendChild(newMessage);
+          textInput.value = ""; // Clear the input field
+        }
+
+        // Scroll to the bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+    });
+
+    const commandInput = document.getElementById("commandInput");
+    const consoleContainer = document.querySelector(".console-messages");
 
     commandInput.addEventListener("keydown", function(event) {
       if (event.key === "Enter") {
         const messageText = commandInput.value.trim();
         if (messageText) {
           const newMessage = document.createElement("p");
-          newMessage.className = "message";
-          newMessage.innerHTML = `You: <span class="mes-span">${messageText}</span>`;
-          messagesContainer.appendChild(newMessage);
+          newMessage.classList.add('command-player');
+          newMessage.innerHTML = `> ${messageText}`;
+          consoleContainer.appendChild(newMessage);
           commandInput.value = ""; // Clear the input field
+
+          // CUSTOM
+
+          const noviMessg = document.createElement("p");
+          noviMessg.className = "console-message";
+          noviMessg.innerHTML = "You venture north, beyond the dark abyss, when you encounter a creature so old it doesn't remember when it came to be. You encounter an old god."
+          consoleContainer.appendChild(noviMessg);
+          // CUSTOM
         }
 
         // Scroll to the bottom
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        consoleContainer.scrollTop = consoleContainer.scrollHeight;
       }
     });
   </script>

@@ -351,10 +351,24 @@ input:focus {
   flex-direction: column;
   gap: 10px;
   font-size: 1rem;
+  overflow-y: auto;
+}
+
+.console-messages::-webkit-scrollbar {
+  background: transparent;
+  width: 0px;
 }
 
 .console-message {
   color: rgb(176, 176, 176);
+  font-family: monospace;
+  line-height: 1.2;
+  padding: 0;
+  margin: 0;
+} 
+
+.command-player {
+  color: yellow;
   font-family: monospace;
   line-height: 1.2;
   padding: 0;
@@ -370,12 +384,6 @@ input:focus {
   }
   .messages {
     max-height: 96%;
-  }
-  .messages p {
-    font-size: 1.3rem; 
-  }
-  .input-command {
-    font-size: 1.3rem;
   }
   .content {
     width: 80vw;
