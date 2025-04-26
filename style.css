@@ -62,7 +62,6 @@ body {
   padding: 10px 10px;
   color: rgb(205, 205, 205);
   font-family: "Spectral", sans-serif;
-  text-shadow: 0px 0px 5px rgba(206, 206, 206, 0.453);
   gap: 15px;
 }
 
@@ -297,7 +296,7 @@ body {
   font-family: "Spectral", sans-serif;
   font-size: 18px;
   line-height: 1.1;
-  text-shadow: 0px 0px 5px rgba(39, 190, 255, 0.746);
+  text-shadow: 0px 0px 5px rgba(39, 190, 255, 0.254);
   white-space: normal;
   word-wrap: break-word;
 }
@@ -330,7 +329,7 @@ input:focus {
 }
 
 .mes-span {
-  color: rgb(56, 162, 194);
+  color: rgb(90, 164, 187);
 }
 
 .input-sign {
@@ -373,6 +372,18 @@ input:focus {
   line-height: 1.2;
   padding: 0;
   margin: 0;
+}
+
+.art .inner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.art .inner img {
+  width: 94%;
+  transform: translate(25px, -135px);
 }
 
 @media (min-width: 2460px) {
